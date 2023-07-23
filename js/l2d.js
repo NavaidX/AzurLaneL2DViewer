@@ -29,6 +29,8 @@ class L2D {
                 this.loader.add(name+'_model', modelDir+modelPath, { xhrType: PIXI.loaders.Resource.XHR_RESPONSE_TYPE.JSON });
                 modelNames.push(name+'_model');
             //} 
+			
+			console.log("modelname:"+name+"  path:"+modelPath);
 
             this.loader.load((loader, resources) => {
                 let model3Obj = resources[name+'_model'].data;
@@ -92,6 +94,7 @@ class L2D {
                     });
 
                     let model = null;
+					console.log("moc == null:"+(moc == null));
                     let coreModel = Live2DCubismCore.Model.fromMoc(moc);
                     if (coreModel == null) {
                         return;
