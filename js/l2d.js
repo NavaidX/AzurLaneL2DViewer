@@ -1,3 +1,7 @@
+// const PIXI = require('./l2d/pixi.min.js')
+// const LIVE2DCUBISMFRAMEWORK = require('./live2dcubismframework.js')
+
+// import PIXI from 
 class L2D {
     constructor (basePath) {
         this.basePath = basePath;
@@ -17,6 +21,7 @@ class L2D {
     }
     
     load (name, v) {
+        console.log("loading:", name)
         if (!this.models[name]) {
             let modelDir = name+'/';
             let modelPath = name+'.model3.json';
@@ -29,8 +34,6 @@ class L2D {
                 this.loader.add(name+'_model', modelDir+modelPath, { xhrType: PIXI.loaders.Resource.XHR_RESPONSE_TYPE.JSON });
                 modelNames.push(name+'_model');
             //} 
-			
-			console.log("modelname:"+name+"  path:"+modelPath);
 
             this.loader.load((loader, resources) => {
                 let model3Obj = resources[name+'_model'].data;
@@ -94,7 +97,6 @@ class L2D {
                     });
 
                     let model = null;
-					console.log("moc == null:"+(moc == null));
                     let coreModel = Live2DCubismCore.Model.fromMoc(moc);
                     if (coreModel == null) {
                         return;
